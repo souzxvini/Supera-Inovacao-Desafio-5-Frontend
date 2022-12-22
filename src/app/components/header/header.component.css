@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  height: 8vh;
+}
+
+*:not(mat-icon){
+  font-family: "Paytone One";
+  color: #3a3a3a;
+}
+
