@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   dataFimInput: string = ""
   dataInicioInput: string = ""
   inputDisabled: boolean = true;
+  clearInputsDisabled: boolean = false;
 
 
   constructor(
@@ -43,8 +44,13 @@ export class HomeComponent implements OnInit {
       nomeOperadorTransacao:['']
     })
 
-
     this.form.valueChanges.subscribe(() => {
+      if(!this.form.get('dataInicio').value && !this.form.get('dataFim').value && !this.form.get('nomeOperadorTransacao').value){
+        this.clearInputsDisabled = true;
+        return
+      } else{
+        this.clearInputsDisabled = false;
+      }
       if(!this.form.get('dataInicio').value || !this.form.get('dataFim').value){
         this.form.get('dataInicio').setErrors( null)
         this.form.get('dataFim').setErrors( null)

@@ -45,7 +45,7 @@
               </mat-form-field>
             </div>
             <div class="col-12 col-md-2" >
-              <button mat-icon-button color="warn" type="button" (click)="limparFiltro()" >
+              <button mat-icon-button color="warn" type="button" (click)="limparFiltro()"  [disabled]="clearInputsDisabled">
                 <mat-icon>close</mat-icon>
               </button>
               <button mat-icon-button color="primary" [disabled]="form.invalid" >
