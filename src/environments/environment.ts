@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: "https://desafio-supera.souzxvini.com.br"
+  API: "http://localhost:8080"
 };
 
 /*
