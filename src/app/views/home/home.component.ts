@@ -141,6 +141,7 @@ export class HomeComponent implements OnInit {
   }
 
   filtrar(){
+    this.page = 0
     this.buscarTransferencias();
     this.buscarSaldos()
   }
