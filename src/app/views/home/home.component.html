@@ -8,8 +8,11 @@
 
               <mat-form-field class="example-full-width">
                 <mat-label>Data de Inicio</mat-label>
-                  <input matInput [matDatepicker]="picker" formControlName="dataInicio" >
+                  <input matInput [matDatepicker]="picker" formControlName="dataInicio" [(ngModel)]="dataInicioInput">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <button *ngIf="dataInicioInput" matSuffix mat-icon-button aria-label="Clear" (click)="dataInicioInput=''">
+                  <mat-icon>close</mat-icon>
+                </button>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
 
@@ -17,8 +20,11 @@
             <div class="col-4 col-md-3">
               <mat-form-field class="example-full-width">
                 <mat-label>Data de Fim</mat-label>
-                <input matInput [matDatepicker]="picker2" formControlName="dataFim" >
+                <input matInput [matDatepicker]="picker2" formControlName="dataFim" [(ngModel)]="dataFimInput">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <button *ngIf="dataFimInput" matSuffix mat-icon-button aria-label="Clear" (click)="dataFimInput=''">
+                  <mat-icon>close</mat-icon>
+                </button>
                 <mat-datepicker  #picker2></mat-datepicker>
               </mat-form-field>
             </div>
@@ -27,7 +33,10 @@
                 <mat-label>
                   Nome Operador Transação
                 </mat-label>
-                <input formControlName="nomeOperadorTransacao" matInput type="text" [matAutocomplete]="auto" (keyup)="buscarNomes($event)"/>
+                <input formControlName="nomeOperadorTransacao" matInput type="text" [matAutocomplete]="auto" (keyup)="buscarNomes($event)" [(ngModel)]="nomeOperadorInput"/>
+                <button *ngIf="nomeOperadorInput" matSuffix mat-icon-button aria-label="Clear" (click)="nomeOperadorInput=''">
+                  <mat-icon>close</mat-icon>
+                </button>
                 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="aoSelecionarAutoComplete($event.option.value)">
                   <mat-option *ngFor="let nome of listaNomes" [value]="nome">
                     {{nome}}
@@ -54,12 +63,15 @@
           <span *ngIf="saldo.valorTotal < 0" class="negativo">{{ saldo.valorTotal | currency: 'BRL' }}</span>
           <span *ngIf="saldo.valorTotal > 0" class="positivo">{{ saldo.valorTotal | currency: 'BRL' }}</span>
           <span *ngIf="saldo.valorTotal == 0" class="zerado">{{ saldo.valorTotal | currency: 'BRL' }}</span>
+          <span *ngIf="!saldo" class="zerado">{{ 0 | currency: 'BRL' }}</span>
+
         </span>
         <span class="saldos">
           Saldo no periodo:
           <span *ngIf="saldo.valorPeriodo < 0" class="negativo">{{ saldo.valorPeriodo | currency: 'BRL' }}</span>
           <span *ngIf="saldo.valorPeriodo > 0" class="positivo">{{ saldo.valorPeriodo | currency: 'BRL' }}</span>
           <span *ngIf="saldo.valorPeriodo == 0" class="zerado">{{ saldo.valorPeriodo | currency: 'BRL' }}</span>
+          <span *ngIf="!saldo" class="zerado">{{ 0 | currency: 'BRL' }}</span>
         </span>
       </div>
 

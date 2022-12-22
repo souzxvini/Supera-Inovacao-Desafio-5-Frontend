@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
   page: number = 0;
   listaNomes: string[] = new Array<string>();
   saldo: Saldo = new Saldo()
+  nomeOperadorInput: string = ""
+  dataFimInput: string = ""
+  dataInicioInput: string = ""
 
 
   constructor(
@@ -40,13 +43,15 @@ export class HomeComponent implements OnInit {
     })
 
     this.form.valueChanges.subscribe(() => {
-      this.datePipe.transform(this.form.get('dataInicio').value, 'dd-MM-yyyy')
-      this.datePipe.transform(this.form.get('dataFim').value, 'dd-MM-yyyy')
-
+      if(!this.form.get('dataInicio').value || !this.form.get('dataFim').value){
+        this.form.get('dataInicio').setErrors( null)
+        this.form.get('dataFim').setErrors( null)
+        return;
+      }
       if(this.form.get('dataInicio').value.getTime() > this.form.get('dataFim').value.getTime()){
         this.form.get('dataInicio').setErrors({invalido: true})
         this.form.get('dataFim').setErrors({invalido: true})
-      } else{
+      }else{
         this.form.get('dataInicio').setErrors( null)
         this.form.get('dataFim').setErrors( null)
       }
@@ -134,6 +139,9 @@ export class HomeComponent implements OnInit {
 
   limparFiltro(){
     this.form.reset();
+    this.transferenciaService.buscarNomes("").subscribe(data => {
+      this.listaNomes = data;
+    })
   }
 
   buscarNomes(e?: Event){
