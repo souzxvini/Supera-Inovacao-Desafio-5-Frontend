@@ -34,7 +34,7 @@
                   Nome Operador Transação
                 </mat-label>
                 <input formControlName="nomeOperadorTransacao" matInput type="text" [matAutocomplete]="auto" (keyup)="buscarNomes($event)" [(ngModel)]="nomeOperadorInput"/>
-                <button *ngIf="nomeOperadorInput" matSuffix mat-icon-button aria-label="Clear" (click)="nomeOperadorInput=''">
+                <button *ngIf="nomeOperadorInput" matSuffix mat-icon-button aria-label="Clear" (click)="limparInput()">
                   <mat-icon>close</mat-icon>
                 </button>
                 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="aoSelecionarAutoComplete($event.option.value)">

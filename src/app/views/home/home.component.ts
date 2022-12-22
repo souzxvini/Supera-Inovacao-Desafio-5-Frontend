@@ -144,6 +144,13 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  limparInput(){
+    this.nomeOperadorInput = ''
+    this.transferenciaService.buscarNomes(this.nomeOperadorInput).subscribe(data => {
+      this.listaNomes = data;
+    })
+  }
+
   buscarNomes(e?: Event){
     const target = e.target as HTMLInputElement;
     const value = target.value
