@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   nomeOperadorInput: string = ""
   dataFimInput: string = ""
   dataInicioInput: string = ""
+  inputDisabled: boolean = true;
 
 
   constructor(
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit {
       dataFim:[''],
       nomeOperadorTransacao:['']
     })
+
 
     this.form.valueChanges.subscribe(() => {
       if(!this.form.get('dataInicio').value || !this.form.get('dataFim').value){

@@ -13,7 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
@@ -57,7 +57,7 @@ registerLocaleData(ptBr);
     MatAutocompleteModule,
     MatButtonModule
   ],
-  providers: [DatePipe,CurrencyPipe,{ provide: LOCALE_ID, useValue: 'pt' },],
+  providers: [DatePipe,CurrencyPipe,{ provide: LOCALE_ID, useValue: 'pt' },{provide: MAT_DATE_LOCALE, useValue: 'pt'}],
 
   bootstrap: [AppComponent]
 })
